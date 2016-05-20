@@ -13,8 +13,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -29,7 +29,7 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
 	}
 
 	public BlockTorchLit() {
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(0.0f);
 		this.setResistance(0.0f);
 		this.setLightLevel(1.0f);
@@ -74,11 +74,11 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
 	 * 
 	 * @see net.minecraft.block.Block#getRenderType()
 	 */
-	@Override
+	/*@Override
 	public int getRenderType() {
 		return 3;
-	}
-
+	}*/
+/*
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntityTorchLit te = (TileEntityTorchLit) world.getTileEntity(pos);
@@ -97,7 +97,7 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
 
 		return super.onBlockActivated(world, pos, state, player, side, hitX, hitY, hitZ);
 	}
-
+*/
 	// Set the fuel level on the TE when placed depending on the held itemStack damage
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
@@ -110,7 +110,7 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
     	te.setFuel(MAX_FUEL - itemMeta);
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
-
+/*
 	// Makes sure the TE isn't deleted before the block
     @Override
     public boolean removedByPlayer(World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
@@ -124,7 +124,7 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
         super.harvestBlock(world, player, pos, state, te);
         world.setBlockToAir(pos);
     }
-
+*/
     // Gets block drops in some special way so that it returns the right thing
     @Override
     public java.util.List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)

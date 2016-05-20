@@ -14,8 +14,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -30,7 +30,7 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 	}
 
 	public BlockTorchCokeUnlit() {
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(0.0f);
 		this.setResistance(0.0f);
 		this.setLightLevel(0.0f);
@@ -42,7 +42,7 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityTorchUnlit();
 	}
-
+/*
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
 
@@ -81,7 +81,7 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 
 		return true;
 	}
-
+*/
 	// Set the fuel level on the TE when placed depending on the held itemStack damage
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
@@ -94,7 +94,7 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 		// itemDamage + fuel = MAX_FUEL
 		te.setFuel(HardcoreTorches.configTorchFuel - itemMeta);
 	}
-
+/*
 	// Makes sure the TE isn't deleted before the block
     @Override
     public boolean removedByPlayer(World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
@@ -108,7 +108,7 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
         super.harvestBlock(world, player, pos, state, te);
         world.setBlockToAir(pos);
     }
-
+*/
     // Gets block drops in some special way so that it return the right thing
     @Override
     public java.util.List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
@@ -128,6 +128,6 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 
     // No particle effects
 	@Override
-	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 	}
 }

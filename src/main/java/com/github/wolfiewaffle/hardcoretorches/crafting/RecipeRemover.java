@@ -8,7 +8,6 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraftforge.common.ChestGenHooks;
 
 /**
  * Copyright (c) 2013 Slime Knights (mDiyo, fuj1n, Sunstrike, progwml6, pillbox) - MIT License
@@ -100,7 +99,7 @@ public class RecipeRemover
 	}*/
 	
 	//removes from all vanilla worldgen chests :D
-	public static void removeFromChests(ItemStack resultItem) {
+	/*public static void removeFromChests(ItemStack resultItem) {
 		ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).removeItem(resultItem);
 		ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).removeItem(resultItem);
 		ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).removeItem(resultItem);
@@ -111,5 +110,5 @@ public class RecipeRemover
 		ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CORRIDOR).removeItem(resultItem);
 		ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_CROSSING).removeItem(resultItem);
 		ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY).removeItem(resultItem);
-	}
+	}*/
 }

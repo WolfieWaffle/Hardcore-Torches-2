@@ -5,16 +5,16 @@ import java.util.Random;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 final class BlockTorchBurnt extends BlockTorch {
 
 	public BlockTorchBurnt(String name) {
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(0.0f);
 		this.setResistance(0.0f);
 		this.setLightLevel(0.0f);
@@ -22,7 +22,7 @@ final class BlockTorchBurnt extends BlockTorch {
 	}
 
 	@Override
-	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
 		EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
 		double d0 = (double) pos.getX() + 0.5D;
 		double d1 = (double) pos.getY() + 0.7D;

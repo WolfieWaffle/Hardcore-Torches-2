@@ -13,7 +13,7 @@ public class Recipes {
 	public static void init()
 	{
 		// Shaped
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE), 'B', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', new ItemStack(Items.COAL, 1, OreDictionary.WILDCARD_VALUE), 'B', "stickWood"));
 		//GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torchUnlitCoke)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
 
 		// Light in inventory

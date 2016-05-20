@@ -60,7 +60,7 @@ public class HardcoreTorches {
 	public void Init(FMLInitializationEvent event) {
 		HardcoreTorches.proxy.init(event);
 		Recipes.init();
-		RecipeRemover.removeAnyRecipe(Item.getItemFromBlock(Blocks.torch));
+		RecipeRemover.removeAnyRecipe(Item.getItemFromBlock(Blocks.TORCH));
 	}
 
 	@EventHandler
