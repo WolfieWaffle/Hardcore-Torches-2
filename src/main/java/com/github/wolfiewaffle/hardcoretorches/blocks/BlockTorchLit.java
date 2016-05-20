@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -78,26 +79,28 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
 	public int getRenderType() {
 		return 3;
 	}*/
-/*
+
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntityTorchLit te = (TileEntityTorchLit) world.getTileEntity(pos);
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+
+		TileEntityTorchLit te = (TileEntityTorchLit) worldIn.getTileEntity(pos);
 
 		// Main logic, must make sure TE isn't null
 		if (te != null) {
-			if (!world.isRemote) {
+			if (!worldIn.isRemote) {
 				if (HardcoreTorches.configDebug) System.out.printf("Right click. Fuel: %d\n", te.getFuelAmount());
 	
 				// Light held torches
-				if (player.getHeldItem() == new ItemStack(ModBlocks.torch_unlit)) {
+				if (playerIn.getHeldItem(hand) == new ItemStack(ModBlocks.torch_unlit)) {
 					//System.out.println("Holding burnt torch");
 				}
 			}
 		}
 
-		return super.onBlockActivated(world, pos, state, player, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 	}
-*/
+
 	// Set the fuel level on the TE when placed depending on the held itemStack damage
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
@@ -110,21 +113,21 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider {
     	te.setFuel(MAX_FUEL - itemMeta);
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
-/*
+
 	// Makes sure the TE isn't deleted before the block
     @Override
-    public boolean removedByPlayer(World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
+    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
         if (willHarvest) return true; //If it will harvest, delay deletion of the block until after getDrops
-        return super.removedByPlayer(world, pos, player, willHarvest);
+        return super.removedByPlayer(state, world, pos, player, willHarvest);
     }
 
     // Makes sure the block is actually deleted
     @Override
-    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te) {
-        super.harvestBlock(world, player, pos, state, te);
-        world.setBlockToAir(pos);
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+        super.harvestBlock(worldIn, player, pos, state, te, stack);
+        worldIn.setBlockToAir(pos);
     }
-*/
+
     // Gets block drops in some special way so that it returns the right thing
     @Override
     public java.util.List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)

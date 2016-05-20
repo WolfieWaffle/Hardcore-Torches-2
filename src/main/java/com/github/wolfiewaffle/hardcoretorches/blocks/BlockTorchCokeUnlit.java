@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityProvider, ITorchUnlit {
+public class BlockTorchCokeUnlit extends BlockTorchUnlit implements ITileEntityProvider, ITorchUnlit {
 
 	public static int MAX_FUEL = HardcoreTorches.configTorchFuel;
 
@@ -93,41 +93,5 @@ public class BlockTorchCokeUnlit extends BlockTorchLit implements ITileEntityPro
 		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
 		// itemDamage + fuel = MAX_FUEL
 		te.setFuel(HardcoreTorches.configTorchFuel - itemMeta);
-	}
-/*
-	// Makes sure the TE isn't deleted before the block
-    @Override
-    public boolean removedByPlayer(World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-        if (willHarvest) return true; //If it will harvest, delay deletion of the block until after getDrops
-        return super.removedByPlayer(world, pos, player, willHarvest);
-    }
-
-    // Makes sure the block is actually deleted
-    @Override
-    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te) {
-        super.harvestBlock(world, player, pos, state, te);
-        world.setBlockToAir(pos);
-    }
-*/
-    // Gets block drops in some special way so that it return the right thing
-    @Override
-    public java.util.List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    {
-    	ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
-		TileEntityTorchUnlit te = world.getTileEntity(pos) instanceof TileEntityTorchUnlit ? (TileEntityTorchUnlit) world.getTileEntity(pos) : null;
-        if (te != null) {
-        	if (HardcoreTorches.configTorchDropMode == 0) {
-        		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
-        		// itemDamage + fuel = MAX_FUEL
-        		int itemMeta = HardcoreTorches.configTorchFuel - te.getFuelAmount();
-        		drop.add(new ItemStack(ModBlocks.torch_unlit, 1, itemMeta));
-        	}
-        }
-        return drop;
-    }
-
-    // No particle effects
-	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 	}
 }
