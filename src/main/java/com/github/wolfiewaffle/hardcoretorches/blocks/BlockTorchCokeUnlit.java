@@ -1,8 +1,5 @@
 package com.github.wolfiewaffle.hardcoretorches.blocks;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchUnlit;
 
@@ -10,13 +7,9 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTorchCokeUnlit extends BlockTorchUnlit implements ITileEntityProvider, ITorchUnlit {

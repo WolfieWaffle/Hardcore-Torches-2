@@ -21,6 +21,6 @@ public class BlockRenderRegister {
     }
 
 	public static void reg(Block block, String name) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(modid, name));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("hardcoretorches:" + name, "inventory"));
 	}
 }
