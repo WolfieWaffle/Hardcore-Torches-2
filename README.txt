@@ -1,0 +1,1 @@
+This is a re-write of my Hardcore Torches mod for Minecraft 1.8.9. You can find more about the mod at the original page. I will add more info later.
