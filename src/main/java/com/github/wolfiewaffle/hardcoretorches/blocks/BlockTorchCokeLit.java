@@ -1,15 +1,20 @@
 package com.github.wolfiewaffle.hardcoretorches.blocks;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchLit;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTorchCokeLit extends BlockTorchLit implements ITileEntityProvider {
@@ -23,7 +28,7 @@ public class BlockTorchCokeLit extends BlockTorchLit implements ITileEntityProvi
 	// Create tile entity
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityTorchLit();
+		return new TileEntityTorchCokeLit();
 	}
 
 	@Override
@@ -44,4 +49,28 @@ public class BlockTorchCokeLit extends BlockTorchLit implements ITileEntityProvi
 			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
 		}
 	}
+
+    // Gets block drops in some special way so that it returns the right thing
+    @Override
+    public java.util.List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+    	ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
+        TileEntityTorchCokeLit te = world.getTileEntity(pos) instanceof TileEntityTorchLit ? (TileEntityTorchCokeLit) world.getTileEntity(pos) : null;
+        if (te != null) {
+        	if (HardcoreTorches.configTorchDropMode != 2) {
+        		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
+        		// itemDamage + fuel = MAX_FUEL
+        		int itemMeta = MAX_FUEL - te.getFuelAmount();
+
+        		// 0 - Drop as lit torch, 1 - drop as unlit torch
+        		if (HardcoreTorches.configTorchDropMode == 0) {
+        			drop.add(new ItemStack(ModBlocks.torch_coke_lit, 1, itemMeta));
+        		} else {
+        			drop.add(new ItemStack(ModBlocks.torch_coke_unlit, 1, itemMeta));
+        		}
+        	} else {
+        		drop.add(new ItemStack(ModBlocks.torch_burnt, 1, 0));
+        	}
+        }
+        return drop;
+    }
 }

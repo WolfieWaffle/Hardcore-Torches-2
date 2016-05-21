@@ -13,15 +13,15 @@ import net.minecraft.world.World;
 final class BlockTorchBurnt extends BlockTorch {
 
 	public BlockTorchBurnt(String name) {
-		this.setUnlocalizedName(name);
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		this.setRegistryName(name);
+		this.setUnlocalizedName(this.getRegistryName().toString());
+		this.setCreativeTab(CreativeTabs.DECORATIONS);
 		this.setHardness(0.0f);
 		this.setResistance(0.0f);
 		this.setLightLevel(0.0f);
-		this.setRegistryName(name);
 	}
 
-	// Only smoke effects
+	// Only display smoke effects, not fire
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		EnumFacing enumfacing = (EnumFacing) stateIn.getValue(FACING);

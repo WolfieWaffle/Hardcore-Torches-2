@@ -10,8 +10,7 @@ public class ItemTorchCokeUnlit extends ItemBlock {
 	public ItemTorchCokeUnlit(Block block) {
 		super(block);
 		this.hasSubtypes = true;
-		this.setMaxDamage(HardcoreTorches.configTorchFuel);
-		this.setRegistryName(ModBlocks.torch_unlit.getRegistryName());
-		this.setMaxStackSize(1);
+		this.setMaxDamage(HardcoreTorches.configTorchCokeFuel);
+		this.setRegistryName(ModBlocks.torch_coke_unlit.getRegistryName());
 	}
 }

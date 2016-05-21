@@ -3,13 +3,12 @@ package com.github.wolfiewaffle.hardcoretorches.tileentity;
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchUnlit;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
-	public static final String publicName = "tileEntityTorchUnlit";
-	private String name = "tileEntityTorchUnlit";
-	private int torchFuel = HardcoreTorches.configTorchFuel;
+public class TileEntityTorchCokeUnlit extends TileEntity implements ITorchUnlit {
+	public static final String publicName = "tileEntityTorchCokeUnlit";
+	private String name = "tileEntityTorchCokeUnlit";
+	private int torchFuel = HardcoreTorches.configTorchCokeFuel;
 
 	/**
 	 * @return The name of this TileEntity
@@ -33,7 +32,7 @@ public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
 		this.torchFuel = f;
 	}
 
-	// Needed for NBT
+	/*// Needed for NBT
 	@Override
 	public void writeToNBT(NBTTagCompound par1) {
 		super.writeToNBT(par1);
@@ -45,5 +44,5 @@ public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
 	public void readFromNBT(NBTTagCompound par1) {
 		super.readFromNBT(par1);
 		this.torchFuel = par1.getInteger("torchFuelNBT");
-	}
+	}*/
 }

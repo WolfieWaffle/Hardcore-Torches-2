@@ -11,6 +11,7 @@ public class ItemTorchUnlit extends ItemBlock {
 		this.hasSubtypes = true;
 		this.setMaxDamage(HardcoreTorches.configTorchFuel);
 		this.setRegistryName(block.getRegistryName());
+		this.setUnlocalizedName(this.getRegistryName().toString());
 		this.setMaxStackSize(1);
 	}
 }

@@ -7,10 +7,10 @@ import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchLit;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTorchLit extends TileEntity implements net.minecraft.util.ITickable, ITorchLit {
-	public static final String publicName = "tileEntityTorchLit";
-	private String name = "tileEntityTorchLit";
-	private int fuel = HardcoreTorches.configTorchFuel;
+public class TileEntityTorchCokeLit extends TileEntity implements net.minecraft.util.ITickable, ITorchLit {
+	public static final String publicName = "tileEntityTorchCokeLit";
+	private String name = "tileEntityTorchCokeLit";
+	private int fuel = HardcoreTorches.configTorchCokeFuel;
 	private int tickCounter = 0; // Used to count seconds
 
 	/**
@@ -68,7 +68,7 @@ public class TileEntityTorchLit extends TileEntity implements net.minecraft.util
 			//If the new fuel value is less than 0, replace the block with a Burnt Torch.
 			if (fuel < 0) {
 				if (HardcoreTorches.configDebug)
-					System.out.printf("Torch at %d, %d, %d has burnt (fuel %d)\n", pos.getX(), pos.getY(), pos.getZ(), fuel);
+					System.out.printf("Coke torch at %d, %d, %d has burnt (fuel %d)\n", pos.getX(), pos.getY(), pos.getZ(), fuel);
 				worldObj.setBlockState(pos, ModBlocks.torch_burnt.getDefaultState());
 			}
 

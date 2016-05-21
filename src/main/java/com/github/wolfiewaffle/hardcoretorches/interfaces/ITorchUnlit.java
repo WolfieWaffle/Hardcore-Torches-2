@@ -1,6 +1,4 @@
-package com.github.wolfiewaffle.hardcoretorches.blocks;
-
-import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchUnlit;
+package com.github.wolfiewaffle.hardcoretorches.interfaces;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -13,13 +11,10 @@ public interface ITorchUnlit {
 
 	/**
 	 * Lights the torch, setting it to a lit torch and keeping the fuel level
-	 * @param world The world object (should be provided somewhere)
-	 * @param pos The position (also usually provded) of the torch
-	 * @param block The new block type
 	 */
-	public default void lightTorch(World world, BlockPos pos, Block block, IBlockState state, EnumFacing enumfacing, TileEntityTorchUnlit te) {
+	public default void lightTorch(World world, BlockPos pos, Block block, IBlockState state, EnumFacing enumfacing, ITorchUnlit te) {
 		// Store old fuel value
-		int oldFuel = ((TileEntityTorchUnlit) world.getTileEntity(pos)).getFuelAmount();
+		int oldFuel = ((ITorchUnlit) world.getTileEntity(pos)).getFuelAmount();
 
 		// Set block
 		world.setBlockState(pos, block.getDefaultState());
@@ -47,4 +42,12 @@ public interface ITorchUnlit {
 		// Set new fuel value
 		((ITorchLit) world.getTileEntity(pos)).setFuel(oldFuel);
 	}
+
+	public int getFuelAmount();
+
+	public default ITorchUnlit getTileEntity(World world, BlockPos pos){
+		return (ITorchUnlit) world.getTileEntity(pos);
+	}
+
+	public void setFuel(int i);
 }
