@@ -21,6 +21,7 @@ final class BlockTorchBurnt extends BlockTorch {
 		this.setRegistryName(name);
 	}
 
+	// Only smoke effects
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		EnumFacing enumfacing = (EnumFacing) stateIn.getValue(FACING);

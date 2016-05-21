@@ -131,6 +131,6 @@ public class BlockTorchUnlit extends BlockTorchLit implements ITileEntityProvide
 
     // No particle effects
 	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 	}
 }

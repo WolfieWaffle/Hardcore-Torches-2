@@ -30,6 +30,7 @@ public class HardcoreTorches {
     public static int configTorchDropMode;
     public static String[] configLightItems;
     public static String[] configFreeLightItems;
+    public static boolean configRegCokeTorches;
 
     @SidedProxy(clientSide="com.github.wolfiewaffle.hardcoretorches.proxy.ClientProxy", serverSide="com.github.wolfiewaffle.hardcoretorches.proxy.ServerProxy")
     public static CommonProxy proxy;
@@ -50,6 +51,7 @@ public class HardcoreTorches {
 		configTorchDropMode = config.getInt("configTorchDropMode", Configuration.CATEGORY_GENERAL, 0, 0, 2, "0: Torches drop as lit torches when broken\n1: Torches drop as unlit torches when broken\n2: Torches burn out completely when broken");
 		configLightItems = config.getStringList("configLightItems", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:flint", "minecraft:flint_and_steel", "fire_charge"}, "A list of items that can be used to light a torch. If the item is not damageable, it will be consumed.");
 		configFreeLightItems = config.getStringList("configFreeLightItems", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:torch", "minecraft:lava_bucket", "hardcoretorches:torch_lit", "hardcoretorches:torch_coke_lit"}, "A list of items that can be used to light a torch. These will not be damaged or consumed.");
+		configRegCokeTorches = config.getBoolean("configRegTorches", Configuration.CATEGORY_GENERAL, false, "Enable coke torches. Requires a mod that adds oreDictionary coal coke.");
 
 		config.save();
 

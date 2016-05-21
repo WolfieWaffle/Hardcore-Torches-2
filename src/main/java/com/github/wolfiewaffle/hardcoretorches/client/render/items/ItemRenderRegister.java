@@ -12,11 +12,11 @@ public class ItemRenderRegister {
 
     public static void registerItemRenderer() {
     	reg(ModItems.torch_burnt, "torch_burnt");
-    	System.out.println("Made it to item render");
+    	reg(ModItems.torch_lit, "torch_lit");
+    	reg(ModItems.torch_unlit, "torch_unlit");
     }
 
 	public static void reg(Item item, String name) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("hardcoretorches:torch_burnt", "inventory"));
-		System.out.println("Made it to reg");
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("hardcoretorches:" + name, "inventory"));
 	}
 }
