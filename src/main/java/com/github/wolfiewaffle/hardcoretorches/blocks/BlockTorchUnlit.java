@@ -1,7 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.blocks;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchLit;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchUnlit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchUnlit;
 
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
