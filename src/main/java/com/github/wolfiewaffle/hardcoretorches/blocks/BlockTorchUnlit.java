@@ -61,6 +61,7 @@ public class BlockTorchUnlit extends BlockTorchBasicUnlit implements ITileEntity
 						}
 
 						lightTorch(worldIn, pos, getLitVariant(), state, state.getValue(FACING), te);
+						return true;
 					}
 				}
 				// Same as above, but for free lighter items
@@ -68,6 +69,7 @@ public class BlockTorchUnlit extends BlockTorchBasicUnlit implements ITileEntity
 					// If item is on the list
 					if (itemStack.getItem() == Item.getByNameOrId(item)) {
 						lightTorch(worldIn, pos, getLitVariant(), state, state.getValue(FACING), te);
+						return true;
 					}
 				}
 			}

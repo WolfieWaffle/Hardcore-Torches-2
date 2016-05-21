@@ -1,5 +1,5 @@
-tile.torch_burnt.name=Burnt Torch
-tile.torch_lit.name=Lit Torch
-tile.torch_unlit.name=Unlit Torch
-tile.torch_coke_lit.name=Lit Coke Torch
-tile.torch_coke_unlit.name=Unlit Coke Torch
+tile.hardcoretorches:torch_burnt.name=Burnt Torch
+tile.hardcoretorches:torch_lit.name=Lit Torch
+tile.hardcoretorches:torch_unlit.name=Unlit Torch
+tile.hardcoretorches:torch_coke_lit.name=Lit Coke Torch
+tile.hardcoretorches:torch_coke_unlit.name=Unlit Coke Torch
