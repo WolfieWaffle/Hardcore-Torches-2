@@ -1,7 +1,7 @@
 package com.github.wolfiewaffle.hardcoretorches.proxy;
 
-import com.github.wolfiewaffle.hardcoretorches.blocks.ModBlocks;
-import com.github.wolfiewaffle.hardcoretorches.items.ModItems;
+import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
+import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.ModTileEntities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

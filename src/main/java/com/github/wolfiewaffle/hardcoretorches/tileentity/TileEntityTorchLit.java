@@ -1,24 +1,17 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.blocks.ModBlocks;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchLit;
+import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
+import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTorchLit extends TileEntity implements net.minecraft.util.ITickable, ITorchLit {
+public class TileEntityTorchLit extends TileEntity implements net.minecraft.util.ITickable, ITileEntityTorchLit {
 	public static final String publicName = "tileEntityTorchLit";
-	private String name = "tileEntityTorchLit";
-	private int fuel = HardcoreTorches.configTorchFuel;
+	private int fuel = ModItems.torch_lit.getMaxDamage();
 	private int tickCounter = 0; // Used to count seconds
-
-	/**
-	 * @return The name of this TileEntity
-	 */
-	public String getName() {
-		return name;
-	}
 
 	/**
 	 * @return The current fuel value of the TileEntity

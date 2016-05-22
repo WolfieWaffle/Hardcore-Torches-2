@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchLit;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchUnlit;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchUnlit;
 
 import net.minecraft.block.Block;
@@ -44,9 +44,9 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 	 * @param pos
 	 * @return The TileEntity at specified BlockPos
 	 */
-	public ITorchUnlit getTileEntity(IBlockAccess worldIn, BlockPos pos) {
+	public ITileEntityTorchUnlit getTileEntity(IBlockAccess worldIn, BlockPos pos) {
 		return worldIn.getTileEntity(pos) 
-				instanceof ITorchUnlit ? (ITorchUnlit) worldIn.getTileEntity(pos) : null;
+				instanceof ITileEntityTorchUnlit ? (ITileEntityTorchUnlit) worldIn.getTileEntity(pos) : null;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
 		// Get TileEntity
-		ITorchUnlit te = getTileEntity(worldIn, pos);
+		ITileEntityTorchUnlit te = getTileEntity(worldIn, pos);
 
 		if (te != null) {
 			// Get correct item meta
@@ -76,7 +76,7 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 			// itemDamage + fuel = MAX_FUEL
 			int itemMeta = MAX_FUEL - te.getFuelAmount();
 
-			drop.add(new ItemStack(ModBlocks.torch_unlit, 1, itemMeta));
+			drop.add(new ItemStack(this, 1, itemMeta));
 		}
 
 		return drop;
@@ -99,9 +99,9 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 	 * @param enumfacing
 	 * @param te
 	 */
-	public void lightTorch(World worldIn, BlockPos pos, Block block, IBlockState state, EnumFacing enumfacing, ITorchUnlit te) {
+	public void lightTorch(World worldIn, BlockPos pos, Block block, IBlockState state, EnumFacing enumfacing, ITileEntityTorchUnlit te) {
 		// Store old fuel value
-		int oldFuel = ((ITorchUnlit) worldIn.getTileEntity(pos)).getFuelAmount();
+		int oldFuel = ((ITileEntityTorchUnlit) worldIn.getTileEntity(pos)).getFuelAmount();
 
 		// Set block
 		worldIn.setBlockState(pos, block.getDefaultState());
@@ -127,7 +127,7 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 		}
 
 		// Set new fuel value
-		((ITorchLit) worldIn.getTileEntity(pos)).setFuel(oldFuel);
+		((ITileEntityTorchLit) worldIn.getTileEntity(pos)).setFuel(oldFuel);
 	}
 
 	// Makes sure the TE isn't deleted before the block
@@ -151,7 +151,7 @@ public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvi
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
   
 		// Get TileEntity to change and meta from item
-		ITorchUnlit te = getTileEntity(worldIn, pos);
+		ITileEntityTorchUnlit te = getTileEntity(worldIn, pos);
     	int itemMeta = stack.getItemDamage();
 
 		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0

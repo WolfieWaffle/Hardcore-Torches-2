@@ -10,7 +10,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-final class BlockTorchBurnt extends BlockTorch {
+public final class BlockTorchBurnt extends BlockTorch {
 
 	public BlockTorchBurnt(String name) {
 		this.setRegistryName(name);

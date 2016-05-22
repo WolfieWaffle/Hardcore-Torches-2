@@ -1,6 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.crafting;
 
-import com.github.wolfiewaffle.hardcoretorches.blocks.ModBlocks;
+import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

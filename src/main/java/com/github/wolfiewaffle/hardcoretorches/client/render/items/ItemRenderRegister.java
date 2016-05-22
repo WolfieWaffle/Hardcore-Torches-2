@@ -1,7 +1,7 @@
 package com.github.wolfiewaffle.hardcoretorches.client.render.items;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.items.ModItems;
+import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -14,8 +14,8 @@ public class ItemRenderRegister {
 		reg(ModItems.torch_burnt, "torch_burnt");
 		reg(ModItems.torch_lit, "torch_lit");
 		reg(ModItems.torch_unlit, "torch_unlit");
-		//reg(ModItems.torch_coke_lit, "torch_coke_lit");
-		//reg(ModItems.torch_coke_unlit, "torch_coke_unlit");
+		if (HardcoreTorches.configRegCokeTorches) reg(ModItems.torch_coke_lit, "torch_coke_lit");
+		if (HardcoreTorches.configRegCokeTorches) reg(ModItems.torch_coke_unlit, "torch_coke_unlit");
 	}
 
 	public static void reg(Item item, String name) {

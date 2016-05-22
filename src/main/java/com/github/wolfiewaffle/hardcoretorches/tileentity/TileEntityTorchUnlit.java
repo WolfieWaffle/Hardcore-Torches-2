@@ -1,28 +1,20 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchUnlit;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
+public class TileEntityTorchUnlit extends TileEntity implements ITileEntityTorchUnlit {
 	public static final String publicName = "tileEntityTorchUnlit";
-	private String name = "tileEntityTorchUnlit";
-	private int torchFuel = HardcoreTorches.configTorchFuel;
-
-	/**
-	 * @return The name of this TileEntity
-	 */
-	public String getName() {
-		return name;
-	}
+	private int fuel = HardcoreTorches.configTorchFuel;
 
 	/**
 	 * @return The current fuel value of the TileEntity
 	 */
 	public int getFuelAmount() {
-		return this.torchFuel;
+		return this.fuel;
 	}
 
 	/**
@@ -30,7 +22,7 @@ public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
 	 * @param f The new fuel value
 	 */
 	public void setFuel(int f) {
-		this.torchFuel = f;
+		this.fuel = f;
 	}
 
 	// Needed for NBT
@@ -44,6 +36,6 @@ public class TileEntityTorchUnlit extends TileEntity implements ITorchUnlit {
 	@Override
 	public void readFromNBT(NBTTagCompound par1) {
 		super.readFromNBT(par1);
-		this.torchFuel = par1.getInteger("torchFuelNBT");
+		this.fuel = par1.getInteger("torchFuelNBT");
 	}
 }

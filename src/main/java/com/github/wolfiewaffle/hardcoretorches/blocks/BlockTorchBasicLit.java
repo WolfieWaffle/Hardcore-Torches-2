@@ -3,9 +3,11 @@ package com.github.wolfiewaffle.hardcoretorches.blocks;
 import java.util.ArrayList;
 
 import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITorchLit;
+import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchLit;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +24,7 @@ import net.minecraft.world.World;
 
 public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvider {
 
-	public static int MAX_FUEL = HardcoreTorches.configTorchFuel;
+	public static int MAX_FUEL;
 
 	public BlockTorchBasicLit(String name) {
 		this.setRegistryName(name);
@@ -40,9 +42,9 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 	 * @param pos
 	 * @return The TileEntity at specified BlockPos
 	 */
-	public ITorchLit getTileEntity(IBlockAccess worldIn, BlockPos pos) {
+	public ITileEntityTorchLit getTileEntity(IBlockAccess worldIn, BlockPos pos) {
 		return worldIn.getTileEntity(pos) 
-				instanceof ITorchLit ? (ITorchLit) worldIn.getTileEntity(pos) : null;
+				instanceof ITileEntityTorchLit ? (ITileEntityTorchLit) worldIn.getTileEntity(pos) : null;
 	}
 
 	/**
@@ -53,39 +55,39 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 		return new TileEntityTorchLit();
 	}
 
-    /**
-     * Gets block drops in some special way so that it returns the right thing (OVERRIDE THIS)
-     */
-    @Override
-    public java.util.List<ItemStack> getDrops(IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune) {
+	/**
+	 * Gets block drops in some special way so that it returns the right thing (OVERRIDE THIS)
+	 */
+	@Override
+	public java.util.List<ItemStack> getDrops(IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune) {
 
-    	// Create drop list
-    	ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
+		// Create drop list
+		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
 
-    	// Get TileEntity
-    	ITorchLit te = getTileEntity(worldIn, pos);
+		// Get TileEntity
+    	ITileEntityTorchLit te = getTileEntity(worldIn, pos);
 
-    	if (te != null) {
- 
-    		// If we aren't dropping burnt torch
-        	if (HardcoreTorches.configTorchDropMode != 2) {
+		if (te != null) {
 
-        		// Get correct item meta
-        		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
-        		// itemDamage + fuel = MAX_FUEL
-        		int itemMeta = MAX_FUEL - te.getFuelAmount();
+			// If we aren't dropping burnt torch
+			if (HardcoreTorches.configTorchDropMode != 2) {
+
+				// Get correct item meta
+				// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
+				// itemDamage + fuel = MAX_FUEL
+				int itemMeta = MAX_FUEL - te.getFuelAmount();
 
         		// 0 - Drop as lit torch, 1 - drop as unlit torch
         		if (HardcoreTorches.configTorchDropMode == 0) {
-        			drop.add(new ItemStack(ModBlocks.torch_lit, 1, itemMeta));
-        		} else {
-        			drop.add(new ItemStack(ModBlocks.torch_unlit, 1, itemMeta));
-        		}
-        	}
-        	// Else do drop burnt torch, we don't need te data for this
-        	else {
-        		drop.add(new ItemStack(ModBlocks.torch_burnt, 1, 0));
-        	}
+        			drop.add(new ItemStack(this, 1, itemMeta));
+				} else {
+					drop.add(new ItemStack(getUnlitVariant(), 1, itemMeta));
+				}
+			}
+			// Else do drop burnt torch, we don't need te data for this
+			else {
+				drop.add(new ItemStack(ModBlocks.torch_burnt, 1, 0));
+			}
  
         }
 
@@ -99,13 +101,30 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 
-		ITorchLit te = (ITorchLit) worldIn.getTileEntity(pos);
+		ITileEntityTorchLit te = (ITileEntityTorchLit) worldIn.getTileEntity(pos);
 
 		if (te != null) {
 			if (HardcoreTorches.configDebug && !worldIn.isRemote) System.out.printf("Right click. Fuel: %d\n", te.getFuelAmount());
 		}
 
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+	}
+
+	/**
+	 * Make sure the new TE has the right fuel based of item meta
+	 */
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+  
+		// Get TileEntity to change and meta from item
+		ITileEntityTorchLit te = worldIn.getTileEntity(pos) instanceof ITileEntityTorchLit ? (ITileEntityTorchLit) worldIn.getTileEntity(pos) : null;
+    	int itemMeta = stack.getItemDamage();
+
+		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
+		// itemDamage + fuel = MAX_FUEL
+    	if (te != null) te.setFuel(MAX_FUEL - itemMeta);
+    	System.out.println("FUEL IS " + MAX_FUEL);
+		//super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
 	// Makes sure the TE isn't deleted before the block
@@ -122,19 +141,8 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
         worldIn.setBlockToAir(pos);
     }
 
-	/**
-	 * Make sure the new TE has the right fuel based of item meta
-	 */
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-  
-		// Get TileEntity to change and meta from item
-		ITorchLit te = getTileEntity(worldIn, pos);
-    	int itemMeta = stack.getItemDamage();
-
-		// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
-		// itemDamage + fuel = MAX_FUEL
-    	te.setFuel(MAX_FUEL - itemMeta);
-		//super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+    // Gets the unlit drop. (OVERRIDE THIS!)
+	private Block getUnlitVariant() {
+		return null;
 	}
 }
