@@ -1,5 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.crafting;
 
+import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 
 import net.minecraft.init.Items;
@@ -14,7 +15,7 @@ public class Recipes {
 	{
 		// Shaped
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', new ItemStack(Items.COAL, 1, OreDictionary.WILDCARD_VALUE), 'B', "stickWood"));
-		//GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torchUnlitCoke)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
+		if (HardcoreTorches.configRegCokeTorches) GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
 
 		// Light in inventory
 		/*if (HardcoreTorches.configLightInInventory) {
