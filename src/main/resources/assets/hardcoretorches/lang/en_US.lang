@@ -1,5 +1,13 @@
 tile.hardcoretorches:torch_burnt.name=Burnt Torch
 tile.hardcoretorches:torch_lit.name=Lit Torch
 tile.hardcoretorches:torch_unlit.name=Unlit Torch
+
 tile.hardcoretorches:torch_coke_lit.name=Lit Coke Torch
 tile.hardcoretorches:torch_coke_unlit.name=Unlit Coke Torch
+
+tile.hardcoretorches:torch_stone_burnt.name=Burnt Stone Torch
+tile.hardcoretorches:torch_stone_lit.name=Lit Stone Torch
+tile.hardcoretorches:torch_stone_unlit.name=Unlit Stone Torch
+
+tile.hardcoretorches:torch_stone_coke_lit.name=Lit Coke Torch
+tile.hardcoretorches:torch_stone_coke_unlit.name=Unlit Coke Torch

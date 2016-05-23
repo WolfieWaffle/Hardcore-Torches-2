@@ -26,6 +26,8 @@ public class ItemRenderRegister {
 		// Stone torches
 		if (ModConfig.configRegStoneTorches) {
 			reg(ModItems.torch_stone_burnt, "torch_stone_burnt");
+			reg(ModItems.torch_stone_lit, "torch_stone_lit");
+			reg(ModItems.torch_stone_unlit, "torch_stone_unlit");
 		}
 	}
 

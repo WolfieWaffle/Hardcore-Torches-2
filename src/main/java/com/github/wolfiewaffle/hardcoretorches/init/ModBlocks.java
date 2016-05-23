@@ -5,6 +5,8 @@ import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchCokeUnlit;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchStoneBurnt;
+import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchStoneLit;
+import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchStoneUnlit;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchUnlit;
 
 import net.minecraft.block.Block;
@@ -22,6 +24,8 @@ public final class ModBlocks {
 
 	// Stone torches
 	public static Block torch_stone_burnt;
+	public static Block torch_stone_lit;
+	public static Block torch_stone_unlit;
 
 	public static void createBlocks() {
 		// Torches
@@ -35,5 +39,7 @@ public final class ModBlocks {
 
 		// Stone torches
 		GameRegistry.register(torch_stone_burnt = new BlockTorchStoneBurnt("torch_stone_burnt"));
+		GameRegistry.register(torch_stone_lit = new BlockTorchStoneLit("torch_stone_lit"));
+		GameRegistry.register(torch_stone_unlit = new BlockTorchStoneUnlit("torch_stone_unlit"));
 	}
 }

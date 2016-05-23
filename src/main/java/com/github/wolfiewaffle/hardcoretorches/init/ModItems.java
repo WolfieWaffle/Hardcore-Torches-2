@@ -6,6 +6,8 @@ import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeUnlit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneBurnt;
+import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneLit;
+import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneUnlit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchUnlit;
 
 import net.minecraft.item.ItemBlock;
@@ -23,6 +25,8 @@ public final class ModItems {
 
 	// Stone torches
 	public static ItemBlock torch_stone_burnt = new ItemTorchStoneBurnt(ModBlocks.torch_stone_burnt);
+	public static ItemBlock torch_stone_lit = new ItemTorchStoneLit(ModBlocks.torch_stone_lit);
+	public static ItemBlock torch_stone_unlit = new ItemTorchStoneUnlit(ModBlocks.torch_stone_unlit);
 
 	public static void createItems() {
 		// Torches
@@ -39,6 +43,8 @@ public final class ModItems {
 		// Stone torches
 		if (ModConfig.configRegStoneTorches) {
 			GameRegistry.register(torch_stone_burnt);
+			GameRegistry.register(torch_stone_lit);
+			GameRegistry.register(torch_stone_unlit);
 		}
 	}
 }
