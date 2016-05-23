@@ -6,6 +6,8 @@ import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeUnlit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneBurnt;
+import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneCokeLit;
+import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneCokeUnlit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchStoneUnlit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchUnlit;
@@ -28,6 +30,10 @@ public final class ModItems {
 	public static ItemBlock torch_stone_lit = new ItemTorchStoneLit(ModBlocks.torch_stone_lit);
 	public static ItemBlock torch_stone_unlit = new ItemTorchStoneUnlit(ModBlocks.torch_stone_unlit);
 
+	// Stone coke torches
+	public static ItemBlock torch_stone_coke_lit = new ItemTorchStoneCokeLit(ModBlocks.torch_stone_coke_lit);
+	public static ItemBlock torch_stone_coke_unlit = new ItemTorchStoneCokeUnlit(ModBlocks.torch_stone_coke_unlit);
+
 	public static void createItems() {
 		// Torches
 		GameRegistry.register(torch_burnt);
@@ -45,6 +51,12 @@ public final class ModItems {
 			GameRegistry.register(torch_stone_burnt);
 			GameRegistry.register(torch_stone_lit);
 			GameRegistry.register(torch_stone_unlit);
+
+			// Stone coke torches
+			if (ModConfig.configRegCokeTorches) {
+				GameRegistry.register(torch_stone_coke_lit);
+				GameRegistry.register(torch_stone_coke_unlit);
+			}
 		}
 	}
 }
