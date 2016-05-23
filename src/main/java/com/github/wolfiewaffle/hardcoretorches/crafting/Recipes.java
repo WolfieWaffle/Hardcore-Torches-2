@@ -24,6 +24,7 @@ public class Recipes {
 			// Free lighter items
 			for (String item : ModConfig.configFreeLightItems) {
 				GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item))));
+				if (ModConfig.configRegCokeTorches) GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
 			}
 
 			// Consumed or damaged lighter items
@@ -31,8 +32,10 @@ public class Recipes {
 				// Is item damageable?
 				if (Item.getByNameOrId(item).isDamageable()) {
 					GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item), 1, OreDictionary.WILDCARD_VALUE)));
+					if (ModConfig.configRegCokeTorches) GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item), 1, OreDictionary.WILDCARD_VALUE)));
 				} else {
 					GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item))));
+					if (ModConfig.configRegCokeTorches) GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
 				}
 			}
 		}
