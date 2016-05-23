@@ -14,6 +14,7 @@ public class ModConfig {
 	public static boolean configDebug;
 	public static int configTorchFuel;
 	public static boolean configRegCokeTorches;
+	public static boolean configRegStoneTorches;
 	public static int configTorchCokeFuel;
 	public static String[] configLightItems;
 	public static String[] configFreeLightItems;
@@ -37,6 +38,7 @@ public class ModConfig {
 		configDebug = config.getBoolean("debug output", Configuration.CATEGORY_GENERAL, false, "Output debug info. Not useful for players.");
 		configTorchFuel = config.getInt("regular torch fuel", Configuration.CATEGORY_GENERAL, 1000, 1, Integer.MAX_VALUE, "The max duration of a basic torch in seconds. Might not update already placed torches.");
 		configRegCokeTorches = config.getBoolean("enable coke torches", Configuration.CATEGORY_GENERAL, false, "Enable coke torches. Requires a mod that adds oreDictionary coal coke.");
+		configRegStoneTorches = config.getBoolean("enable stone torches", Configuration.CATEGORY_GENERAL, false, "Enable stone torches. Requires Tinker's Construct.");
 		configTorchCokeFuel = config.getInt("coke torch fuel", Configuration.CATEGORY_GENERAL, 2000, 1, Integer.MAX_VALUE, "The max duration of a coke torch in seconds. Might not update already placed torches. (Requires enable coke torches: true)");
 		configLightItems = config.getStringList("consumed lighter items", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:flint", "minecraft:flint_and_steel", "fire_charge"}, "A list of items that can be used to light a torch. If the item is not damageable, it will be consumed.");
 		configFreeLightItems = config.getStringList("free lighter items", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:torch", "minecraft:lava_bucket", "hardcoretorches:torch_lit", "hardcoretorches:torch_coke_lit"}, "A list of items that can be used to light a torch. These will not be damaged or consumed.");
