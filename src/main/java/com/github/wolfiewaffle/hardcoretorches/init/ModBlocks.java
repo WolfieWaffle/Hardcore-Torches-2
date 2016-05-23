@@ -1,5 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.init;
 
+import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchBurnt;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchCokeLit;
@@ -47,7 +48,7 @@ public final class ModBlocks {
 		}
 
 		// Stone torches
-		if (ModConfig.configRegStoneTorches) {
+		if (ModConfig.configRegStoneTorches && HardcoreTorches.isTconInstalled) {
 			GameRegistry.register(torch_stone_burnt = new BlockTorchStoneBurnt("torch_stone_burnt"));
 			GameRegistry.register(torch_stone_lit = new BlockTorchStoneLit("torch_stone_lit"));
 			GameRegistry.register(torch_stone_unlit = new BlockTorchStoneUnlit("torch_stone_unlit"));

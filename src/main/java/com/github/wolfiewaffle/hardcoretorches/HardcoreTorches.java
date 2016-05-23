@@ -6,6 +6,7 @@ import com.github.wolfiewaffle.hardcoretorches.proxy.CommonProxy;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -19,6 +20,8 @@ public class HardcoreTorches {
 	public static final String MODID = "hardcoretorches";
 	public static final String MODNAME = "Hardcore Torches";
 	public static final String VERSION = "@VERSION@";
+
+	public static boolean isTconInstalled = false;
 
 	@SidedProxy(clientSide = "com.github.wolfiewaffle.hardcoretorches.proxy.ClientProxy", serverSide = "com.github.wolfiewaffle.hardcoretorches.proxy.ServerProxy")
 	public static CommonProxy proxy;
@@ -42,5 +45,7 @@ public class HardcoreTorches {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		HardcoreTorches.proxy.postInit(event);
+
+		isTconInstalled = Loader.isModLoaded("tconstruct");
 	}
 }
