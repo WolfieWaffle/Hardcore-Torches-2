@@ -1,6 +1,5 @@
 package com.github.wolfiewaffle.hardcoretorches.init;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchBurnt;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.blocks.BlockTorchCokeUnlit;
@@ -21,7 +20,7 @@ public final class ModBlocks {
     	GameRegistry.register(torch_burnt = new BlockTorchBurnt("torch_burnt"));
     	GameRegistry.register(torch_lit = new BlockTorchLit("torch_lit"));
     	GameRegistry.register(torch_coke_lit = new BlockTorchCokeLit("torch_coke_lit"));
-    	if (HardcoreTorches.configRegCokeTorches) GameRegistry.register(torch_unlit = new BlockTorchUnlit("torch_unlit"));
-    	if (HardcoreTorches.configRegCokeTorches) GameRegistry.register(torch_coke_unlit = new BlockTorchCokeUnlit("torch_coke_unlit"));
+    	GameRegistry.register(torch_unlit = new BlockTorchUnlit("torch_unlit"));
+    	GameRegistry.register(torch_coke_unlit = new BlockTorchCokeUnlit("torch_coke_unlit"));
     }
 }

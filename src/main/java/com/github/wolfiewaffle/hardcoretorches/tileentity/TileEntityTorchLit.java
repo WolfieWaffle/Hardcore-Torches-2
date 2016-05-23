@@ -1,6 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
@@ -60,7 +60,7 @@ public class TileEntityTorchLit extends TileEntity implements net.minecraft.util
 
 			//If the new fuel value is less than 0, replace the block with a Burnt Torch.
 			if (fuel < 0) {
-				if (HardcoreTorches.configDebug)
+				if (ModConfig.configDebug)
 					System.out.printf("Torch at %d, %d, %d has burnt (fuel %d)\n", pos.getX(), pos.getY(), pos.getZ(), fuel);
 				worldObj.setBlockState(pos, ModBlocks.torch_burnt.getDefaultState());
 			}

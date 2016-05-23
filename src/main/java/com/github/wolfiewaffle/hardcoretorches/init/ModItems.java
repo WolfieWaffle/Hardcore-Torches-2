@@ -1,6 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.init;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchBurnt;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeLit;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchCokeUnlit;
@@ -21,7 +21,7 @@ public final class ModItems {
 		GameRegistry.register(torch_burnt);
 		GameRegistry.register(torch_lit);
 		GameRegistry.register(torch_unlit);
-		if (HardcoreTorches.configRegCokeTorches) GameRegistry.register(torch_coke_lit);
-		if (HardcoreTorches.configRegCokeTorches) GameRegistry.register(torch_coke_unlit);
+		if (ModConfig.configRegCokeTorches) GameRegistry.register(torch_coke_lit);
+		if (ModConfig.configRegCokeTorches) GameRegistry.register(torch_coke_unlit);
 	}
 }

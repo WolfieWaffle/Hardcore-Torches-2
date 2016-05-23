@@ -2,7 +2,7 @@ package com.github.wolfiewaffle.hardcoretorches.blocks;
 
 import java.util.ArrayList;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchLit;
@@ -70,7 +70,7 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 		if (te != null) {
 
 			// If we aren't dropping burnt torch
-			if (HardcoreTorches.configTorchDropMode != 2) {
+			if (ModConfig.configTorchDropMode != 2) {
 
 				// Get correct item meta
 				// Item damage goes from 0 to 1000, TE fuel value goes from 1000 to 0
@@ -78,7 +78,7 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 				int itemMeta = MAX_FUEL - te.getFuelAmount();
 
         		// 0 - Drop as lit torch, 1 - drop as unlit torch
-        		if (HardcoreTorches.configTorchDropMode == 0) {
+        		if (ModConfig.configTorchDropMode == 0) {
         			drop.add(new ItemStack(this, 1, itemMeta));
 				} else {
 					drop.add(new ItemStack(getUnlitVariant(), 1, itemMeta));
@@ -104,7 +104,7 @@ public class BlockTorchBasicLit extends BlockTorch implements ITileEntityProvide
 		ITileEntityTorchLit te = (ITileEntityTorchLit) worldIn.getTileEntity(pos);
 
 		if (te != null) {
-			if (HardcoreTorches.configDebug && !worldIn.isRemote) System.out.printf("Right click. Fuel: %d\n", te.getFuelAmount());
+			if (ModConfig.configDebug && !worldIn.isRemote) System.out.printf("Right click. Fuel: %d\n", te.getFuelAmount());
 		}
 
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);

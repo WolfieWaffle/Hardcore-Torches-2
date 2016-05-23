@@ -1,6 +1,6 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityTorchCokeUnlit extends TileEntity implements ITileEntityTorchUnlit {
 	public static final String publicName = "tileEntityTorchCokeUnlit";
-	private int fuel = HardcoreTorches.configTorchCokeFuel;
+	private int fuel = ModConfig.configTorchCokeFuel;
 
 	/**
 	 * @return The current fuel value of the TileEntity

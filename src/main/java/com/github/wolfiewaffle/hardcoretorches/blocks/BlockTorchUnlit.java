@@ -3,7 +3,7 @@ package com.github.wolfiewaffle.hardcoretorches.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.IBlockTorchUnlit;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 
 public class BlockTorchUnlit extends BlockTorch implements ITileEntityProvider, IBlockTorchUnlit {
 
-	public int MAX_FUEL = HardcoreTorches.configTorchFuel;
+	public int MAX_FUEL = ModConfig.configTorchFuel;
 
 	public BlockTorchUnlit(String name) {
 		this.setRegistryName(name);
@@ -91,7 +91,7 @@ public class BlockTorchUnlit extends BlockTorch implements ITileEntityProvider, 
 		if (te != null) {
 
 			// Debug
-			if (HardcoreTorches.configDebug) {
+			if (ModConfig.configDebug) {
 				if (!worldIn.isRemote) {
 					System.out.printf("Right click. Fuel: %d\n", te.getFuelAmount());
 				}
@@ -102,7 +102,7 @@ public class BlockTorchUnlit extends BlockTorch implements ITileEntityProvider, 
 
 			if(itemStack != null) {
 				// For each item in the config for lighter items, do logic
-				for (String item : HardcoreTorches.configLightItems) {
+				for (String item : ModConfig.configLightItems) {
 					// If item is on the list
 					if (itemStack.getItem() == Item.getByNameOrId(item)) {
 						// Light the torch and consume or damage item
@@ -117,7 +117,7 @@ public class BlockTorchUnlit extends BlockTorch implements ITileEntityProvider, 
 					}
 				}
 				// Same as above, but for free lighter items
-				for (String item : HardcoreTorches.configFreeLightItems) {
+				for (String item : ModConfig.configFreeLightItems) {
 					// If item is on the list
 					if (itemStack.getItem() == Item.getByNameOrId(item)) {
 						lightTorch(worldIn, pos, getLitVariant(), state, state.getValue(FACING), te);

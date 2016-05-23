@@ -3,7 +3,7 @@ package com.github.wolfiewaffle.hardcoretorches.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
+import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchUnlit;
@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 
 public class BlockTorchBasicUnlit extends BlockTorch implements ITileEntityProvider {
 
-	public static int MAX_FUEL = HardcoreTorches.configTorchFuel;
+	public static int MAX_FUEL = ModConfig.configTorchFuel;
 
 	public BlockTorchBasicUnlit(String name) {
 		this.setRegistryName(name);
