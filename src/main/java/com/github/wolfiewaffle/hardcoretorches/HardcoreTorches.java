@@ -20,12 +20,12 @@ public class HardcoreTorches {
 	public static final String MODNAME = "Hardcore Torches";
 	public static final String VERSION = "@VERSION@";
 
-    @SidedProxy(clientSide="com.github.wolfiewaffle.hardcoretorches.proxy.ClientProxy", serverSide="com.github.wolfiewaffle.hardcoretorches.proxy.ServerProxy")
-    public static CommonProxy proxy;
+	@SidedProxy(clientSide = "com.github.wolfiewaffle.hardcoretorches.proxy.ClientProxy", serverSide = "com.github.wolfiewaffle.hardcoretorches.proxy.ServerProxy")
+	public static CommonProxy proxy;
 
-    // Instance so we can refer to the mod later
-    @Instance
-    public static HardcoreTorches instance = new HardcoreTorches();
+	// Instance so we can refer to the mod later
+	@Instance
+	public static HardcoreTorches instance = new HardcoreTorches();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
