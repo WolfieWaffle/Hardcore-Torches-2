@@ -37,7 +37,7 @@ public final class ModItems {
 		GameRegistry.register(torch_lit);
 		GameRegistry.register(torch_unlit);
 
-		//GameRegistry.register(torch_stone_burnt);
+		GameRegistry.register(torch_stone_burnt);
 
 		// Coke torches
 		if (ModConfig.configRegCokeTorches) {
