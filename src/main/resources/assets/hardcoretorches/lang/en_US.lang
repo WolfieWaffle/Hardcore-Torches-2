@@ -9,7 +9,7 @@ tile.hardcoretorches:torch_stone_burnt.name=Burnt Stone Torch
 tile.hardcoretorches:torch_stone_lit.name=Lit Stone Torch
 tile.hardcoretorches:torch_stone_unlit.name=Unlit Stone Torch
 
-tile.hardcoretorches:torch_stone_coke_lit.name=Lit Coke Torch
-tile.hardcoretorches:torch_stone_coke_unlit.name=Unlit Coke Torch
+tile.hardcoretorches:torch_stone_coke_lit.name=Lit Stone Coke Torch
+tile.hardcoretorches:torch_stone_coke_unlit.name=Unlit Stone Coke Torch
 
 itemGroup.tabTorches=Hardcore Torches

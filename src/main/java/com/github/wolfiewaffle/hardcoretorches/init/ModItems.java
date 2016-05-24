@@ -1,6 +1,5 @@
 package com.github.wolfiewaffle.hardcoretorches.init;
 
-import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchBasic;
 
@@ -11,10 +10,11 @@ public final class ModItems {
 	private static int FUEL_REGULAR = ModConfig.configTorchFuel;
 	private static int FUEL_COKE = ModConfig.configTorchCokeFuel;
 
-	//public static final CreativeTabs tabTorches = new CreativeTab("tabTorches", new ItemStack(Blocks.TORCH));
+	// public static final CreativeTabs tabTorches = new
+	// CreativeTab("tabTorches", new ItemStack(Blocks.TORCH));
 
 	// Torches
-	public static ItemBlock torch_burnt = new ItemTorchBasic(ModBlocks.torch_burnt, "torch_burnt", FUEL_REGULAR);
+	public static ItemBlock torch_burnt = new ItemTorchBasic(ModBlocks.torch_burnt, "torch_burnt", 0);
 	public static ItemBlock torch_lit = new ItemTorchBasic(ModBlocks.torch_lit, "torch_lit", FUEL_REGULAR, 1);
 	public static ItemBlock torch_unlit = new ItemTorchBasic(ModBlocks.torch_unlit, "torch_unlit", FUEL_REGULAR);
 
@@ -23,7 +23,7 @@ public final class ModItems {
 	public static ItemBlock torch_coke_unlit = new ItemTorchBasic(ModBlocks.torch_coke_unlit, "torch_coke_unlit", FUEL_COKE);
 
 	// Stone torches
-	public static ItemBlock torch_stone_burnt = new ItemTorchBasic(ModBlocks.torch_stone_burnt, "torch_stone_burnt", FUEL_REGULAR);
+	public static ItemBlock torch_stone_burnt = new ItemTorchBasic(ModBlocks.torch_stone_burnt, "torch_stone_burnt", 0);
 	public static ItemBlock torch_stone_lit = new ItemTorchBasic(ModBlocks.torch_stone_lit, "torch_stone_lit", FUEL_REGULAR, 1);
 	public static ItemBlock torch_stone_unlit = new ItemTorchBasic(ModBlocks.torch_stone_unlit, "torch_stone_unlit", FUEL_REGULAR);
 
@@ -37,25 +37,17 @@ public final class ModItems {
 		GameRegistry.register(torch_lit);
 		GameRegistry.register(torch_unlit);
 
-		GameRegistry.register(torch_stone_burnt);
-
 		// Coke torches
-		if (ModConfig.configRegCokeTorches) {
-			//GameRegistry.register(torch_coke_lit);
-			//GameRegistry.register(torch_coke_unlit);
-		}
+		GameRegistry.register(torch_coke_lit);
+		GameRegistry.register(torch_coke_unlit);
 
 		// Stone torches
-		if (ModConfig.configRegStoneTorches && HardcoreTorches.isTconInstalled) {
-			//GameRegistry.register(torch_stone_burnt);
-			//GameRegistry.register(torch_stone_lit);
-			//GameRegistry.register(torch_stone_unlit);
+		GameRegistry.register(torch_stone_burnt);
+		GameRegistry.register(torch_stone_lit);
+		GameRegistry.register(torch_stone_unlit);
 
-			// Stone coke torches
-			if (ModConfig.configRegCokeTorches) {
-				//GameRegistry.register(torch_stone_coke_lit);
-				//GameRegistry.register(torch_stone_coke_unlit);
-			}
-		}
+		// Stone coke torches
+		GameRegistry.register(torch_stone_coke_lit);
+		GameRegistry.register(torch_stone_coke_unlit);
 	}
 }
