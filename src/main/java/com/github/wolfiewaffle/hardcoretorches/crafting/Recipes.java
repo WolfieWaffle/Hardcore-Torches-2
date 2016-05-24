@@ -16,72 +16,84 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Recipes {
 	public static void init() {
-		// Remvoe recipes
+		final ItemStack coal = new ItemStack(Items.COAL, 1, OreDictionary.WILDCARD_VALUE);
+
+		// Remove recipes
 		RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.TORCH));
-		 if (HardcoreTorches.isTconInstalled) {
-			 RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.TORCH));
-		 }
+		if (HardcoreTorches.isTconInstalled) {
+			// TODO: Fix this
+		}
 
 		// Torch recipes
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', new ItemStack(Items.COAL, 1, OreDictionary.WILDCARD_VALUE), 'B', "stickWood"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', coal, 'B', "stickWood"));
+		if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
+		if (ModConfig.configCraftStoneTorches && HardcoreTorches.isTconInstalled) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_unlit)), "A", "B", 'A', coal, 'B', "stickStone"));
+			if (ModConfig.configCraftCokeTorches) {
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickStone"));
+			}
+		}
 
 		// Light in inventory
 		if (ModConfig.configLightInInventory) {
 
 			// Free lighter items
-			for (String item : ModConfig.configFreeLightItems) {
+			for (String string : ModConfig.configFreeLightItems) {
+				// Shorten names
+				ItemStack itemStack = new ItemStack(Item.getByNameOrId(string));
 
 				// Torches
-				GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item))));
+				GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), itemStack));
 
 				// Coke torches
-				if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+				if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), itemStack));
 
 				// Stone torches
 				if (ModConfig.configCraftStoneTorches && HardcoreTorches.isTconInstalled) {
-					GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), new ItemStack(Item.getByNameOrId(item))));
+					GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), itemStack));
 
 					// Stone coke torches
-					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessReuseRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), itemStack));
 				}
 			}
 
 			// Consumed or damaged lighter items
-			for (String item : ModConfig.configLightItems) {
+			for (String string : ModConfig.configLightItems) {
+				// Shorten names
+				ItemStack itemStack = new ItemStack(Item.getByNameOrId(string), 1, OreDictionary.WILDCARD_VALUE);
 
 				// Is item damageable?
-				if (Item.getByNameOrId(item).isDamageable()) {
+				if (itemStack.getItem().isDamageable()) {
 
 					// Torches
-					GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item))));
+					GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), itemStack));
 
 					// Coke torches
-					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), itemStack));
 
 					// Stone torches
 					if (ModConfig.configCraftStoneTorches && HardcoreTorches.isTconInstalled) {
-						GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), new ItemStack(Item.getByNameOrId(item))));
+						GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), itemStack));
 
 						// Stone coke torches
-						if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+						if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessDamageRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), itemStack));
 					}
 
 				// Item is not damageable
 				} else {
 
 					// Torches
-					GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), new ItemStack(Item.getByNameOrId(item))));
+					GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_lit), new ItemStack(ModItems.torch_unlit), itemStack));
 
 					// Coke torches
-					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+					if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_coke_lit), new ItemStack(ModItems.torch_coke_unlit), itemStack));
 
 					// Stone torches
 					if (ModConfig.configCraftStoneTorches && HardcoreTorches.isTconInstalled) {
-						GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), new ItemStack(Item.getByNameOrId(item))));
+						GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_stone_lit), new ItemStack(ModItems.torch_stone_unlit), itemStack));
 
 						// Stone coke torches
-						if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), new ItemStack(Item.getByNameOrId(item))));
+						if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.torch_stone_coke_lit), new ItemStack(ModItems.torch_stone_coke_unlit), itemStack));
 					}
 				}
 			}
