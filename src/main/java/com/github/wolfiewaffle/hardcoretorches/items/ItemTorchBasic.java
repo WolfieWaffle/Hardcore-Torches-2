@@ -1,6 +1,7 @@
 package com.github.wolfiewaffle.hardcoretorches.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 
 public class ItemTorchBasic extends ItemBlock {
@@ -24,6 +25,7 @@ public class ItemTorchBasic extends ItemBlock {
 	public ItemTorchBasic(Block block, String name, int fuel) {
 		super(block);
 		this.setRegistryName(name);
+		this.setCreativeTab(CreativeTabs.DECORATIONS);
 		if (fuel > 0) {
 			this.setHasSubtypes(hasSubtypes);
 			this.setMaxDamage(fuel);

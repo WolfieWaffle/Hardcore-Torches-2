@@ -2,10 +2,9 @@ package com.github.wolfiewaffle.hardcoretorches.blocks;
 
 import java.util.Random;
 
-import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
-
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -15,7 +14,7 @@ public final class BlockTorchStoneBurnt extends BlockTorch {
 
 	public BlockTorchStoneBurnt(String name) {
 		this.setRegistryName(name);
-		this.setCreativeTab(ModItems.tabTorches);
+		this.setCreativeTab(CreativeTabs.DECORATIONS);
 		this.setHardness(0.0f);
 		this.setResistance(0.0f);
 		this.setLightLevel(0.0f);

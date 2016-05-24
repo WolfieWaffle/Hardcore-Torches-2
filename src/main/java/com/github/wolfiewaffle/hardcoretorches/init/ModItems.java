@@ -4,18 +4,14 @@ import com.github.wolfiewaffle.hardcoretorches.HardcoreTorches;
 import com.github.wolfiewaffle.hardcoretorches.ModConfig;
 import com.github.wolfiewaffle.hardcoretorches.items.ItemTorchBasic;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import slimeknights.mantle.client.CreativeTab;
 
 public final class ModItems {
 	private static int FUEL_REGULAR = ModConfig.configTorchFuel;
 	private static int FUEL_COKE = ModConfig.configTorchCokeFuel;
 
-	public static final CreativeTabs tabTorches = new CreativeTab("Hardcore Torches", new ItemStack(Blocks.TORCH));
+	//public static final CreativeTabs tabTorches = new CreativeTab("tabTorches", new ItemStack(Blocks.TORCH));
 
 	// Torches
 	public static ItemBlock torch_burnt = new ItemTorchBasic(ModBlocks.torch_burnt, "torch_burnt", FUEL_REGULAR);
@@ -41,20 +37,22 @@ public final class ModItems {
 		GameRegistry.register(torch_lit);
 		GameRegistry.register(torch_unlit);
 
+		//GameRegistry.register(torch_stone_burnt);
+
 		// Coke torches
 		if (ModConfig.configRegCokeTorches) {
-			GameRegistry.register(torch_coke_lit);
-			GameRegistry.register(torch_coke_unlit);
+			//GameRegistry.register(torch_coke_lit);
+			//GameRegistry.register(torch_coke_unlit);
 		}
 
 		// Stone torches
-		if (ModConfig.configRegStoneTorches) {
+		if (ModConfig.configRegStoneTorches && HardcoreTorches.isTconInstalled) {
 			//GameRegistry.register(torch_stone_burnt);
 			//GameRegistry.register(torch_stone_lit);
 			//GameRegistry.register(torch_stone_unlit);
 
 			// Stone coke torches
-			if (ModConfig.configRegCokeTorches && HardcoreTorches.isTconInstalled) {
+			if (ModConfig.configRegCokeTorches) {
 				//GameRegistry.register(torch_stone_coke_lit);
 				//GameRegistry.register(torch_stone_coke_unlit);
 			}
