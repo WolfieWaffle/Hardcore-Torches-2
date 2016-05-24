@@ -14,7 +14,7 @@ public final class ModItems {
 	// CreativeTab("tabTorches", new ItemStack(Blocks.TORCH));
 
 	// Torches
-	public static ItemBlock torch_burnt = new ItemTorchBasic(ModBlocks.torch_burnt, "torch_burnt", 0);
+	public static ItemBlock torch_burnt = new ItemTorchBasic(ModBlocks.torch_burnt, "torch_burnt", FUEL_REGULAR);
 	public static ItemBlock torch_lit = new ItemTorchBasic(ModBlocks.torch_lit, "torch_lit", FUEL_REGULAR, 1);
 	public static ItemBlock torch_unlit = new ItemTorchBasic(ModBlocks.torch_unlit, "torch_unlit", FUEL_REGULAR);
 
@@ -23,7 +23,7 @@ public final class ModItems {
 	public static ItemBlock torch_coke_unlit = new ItemTorchBasic(ModBlocks.torch_coke_unlit, "torch_coke_unlit", FUEL_COKE);
 
 	// Stone torches
-	public static ItemBlock torch_stone_burnt = new ItemTorchBasic(ModBlocks.torch_stone_burnt, "torch_stone_burnt", 0);
+	public static ItemBlock torch_stone_burnt = new ItemTorchBasic(ModBlocks.torch_stone_burnt, "torch_stone_burnt", FUEL_REGULAR);
 	public static ItemBlock torch_stone_lit = new ItemTorchBasic(ModBlocks.torch_stone_lit, "torch_stone_lit", FUEL_REGULAR, 1);
 	public static ItemBlock torch_stone_unlit = new ItemTorchBasic(ModBlocks.torch_stone_unlit, "torch_stone_unlit", FUEL_REGULAR);
 
