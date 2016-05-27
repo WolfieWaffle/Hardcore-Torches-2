@@ -4,13 +4,14 @@
   "name": "Hardcore Torches",
   "description": "Torches that burn out. Meant as a replacement for Unlit Torches in 1.7.10+.",
   "version": "${version}",
-  "mcversion": "1.7.10",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Wolfie_Waffle"],
-  "credits": "The Forge and FML guys, Choonster (who helped me so much I could not have made this mod without them) and my cat, for being fluffy.",
+  "credits": "Choonster (who helped me a ton), sky_01 (Who also helped me) and my cat, for being fluffy.",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "useDependencyInformation": true,
+  "dependencies": [ "Forge", "tconstruct" ]
 }
 ]

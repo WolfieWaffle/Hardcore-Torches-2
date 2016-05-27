@@ -20,8 +20,7 @@ import net.minecraft.item.crafting.ShapelessRecipes;
  * 
  * Wolfie Waffle: This license is here because this class file is from the SlimeKnights. All credit for these methods and code goes to them!
  */
-public class RecipeRemover
-{
+public class RecipeRemover {
 	public static void removeShapedRecipes(List<ItemStack> removelist) {
 		for (ItemStack stack : removelist)
 			removeShapedRecipe(stack);

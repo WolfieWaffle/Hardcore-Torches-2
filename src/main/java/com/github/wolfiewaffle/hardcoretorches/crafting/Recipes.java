@@ -20,17 +20,19 @@ public class Recipes {
 
 		// Remove recipes
 		RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.TORCH));
-		if (HardcoreTorches.isTconInstalled) {
-			// TODO: Fix this
-		}
+		//if (HardcoreTorches.isTconInstalled) {
+			RecipeRemover.removeAnyRecipe(Item.getItemFromBlock(slimeknights.tconstruct.gadgets.TinkerGadgets.stoneTorch));
+		//}
 
 		// Torch recipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', coal, 'B', "stickWood"));
 		if (ModConfig.configCraftCokeTorches) GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickWood"));
 		if (ModConfig.configCraftStoneTorches && HardcoreTorches.isTconInstalled) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_unlit)), "A", "B", 'A', coal, 'B', "stickStone"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_unlit)), "A", "B", 'A', coal, 'B', "rodStone"));
 			if (ModConfig.configCraftCokeTorches) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "stickStone"));
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_stone_coke_unlit)), "A", "B", 'A', "fuelCoke", 'B', "rodStone"));
 			}
 		}
 
