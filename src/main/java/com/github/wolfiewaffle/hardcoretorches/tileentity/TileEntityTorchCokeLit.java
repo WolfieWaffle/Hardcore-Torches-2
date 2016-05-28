@@ -1,7 +1,8 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
 import com.github.wolfiewaffle.hardcoretorches.ModConfig;
-import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
+import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.IBlockTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityTorchCokeLit extends TileEntity implements net.minecraft.util.ITickable, ITileEntityTorchLit {
 	public static final String publicName = "tileEntityTorchCokeLit";
-	private int fuel = ModConfig.configTorchCokeFuel;
+	private int fuel = ModItems.torch_coke_lit.getMaxDamage();
 	private int tickCounter = 0; // Used to count seconds
 
 	/**
@@ -61,7 +62,7 @@ public class TileEntityTorchCokeLit extends TileEntity implements net.minecraft.
 			if (fuel < 0) {
 				if (ModConfig.configDebug)
 					System.out.printf("Coke torch at %d, %d, %d has burnt (fuel %d)\n", pos.getX(), pos.getY(), pos.getZ(), fuel);
-				worldObj.setBlockState(pos, ModBlocks.torch_burnt.getDefaultState());
+				((IBlockTorchLit) getBlockType()).burnOut(worldObj, pos);
 			}
 
 			tickCounter = 0;

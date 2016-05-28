@@ -15,4 +15,10 @@ public interface IBlockTorchLit {
 
 	// Must have a lit version of the torch
 	public Block getUnlitVariant();
+
+	// Must have a burnt version of the torch
+	public Block getBurntVariant();
+
+	// Must be able to burn out
+	public void burnOut(World worldIn, BlockPos pos);
 }

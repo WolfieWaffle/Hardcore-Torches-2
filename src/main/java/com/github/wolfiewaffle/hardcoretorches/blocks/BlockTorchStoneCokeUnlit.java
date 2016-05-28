@@ -16,6 +16,7 @@ public class BlockTorchStoneCokeUnlit extends BlockTorchCokeUnlit implements ITi
 
 	public BlockTorchStoneCokeUnlit(String name) {
 		super(name);
+		this.isBlockContainer = true;
 	}
 
 	// Create tile entity

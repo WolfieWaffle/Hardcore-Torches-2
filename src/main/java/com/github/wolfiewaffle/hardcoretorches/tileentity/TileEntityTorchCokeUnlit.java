@@ -21,8 +21,8 @@ public class TileEntityTorchCokeUnlit extends TileEntity implements ITileEntityT
 	 * Sets the fuel value of the TileEntity
 	 * @param f The new fuel value
 	 */
-	public void setFuel(int f) {
-		this.fuel = f;
+	public void setFuel(int fuel) {
+		this.fuel = fuel;
 	}
 
 	// Needed for NBT

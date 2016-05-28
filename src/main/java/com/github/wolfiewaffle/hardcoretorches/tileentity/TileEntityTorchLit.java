@@ -1,8 +1,8 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
 import com.github.wolfiewaffle.hardcoretorches.ModConfig;
-import com.github.wolfiewaffle.hardcoretorches.init.ModBlocks;
 import com.github.wolfiewaffle.hardcoretorches.init.ModItems;
+import com.github.wolfiewaffle.hardcoretorches.interfaces.IBlockTorchLit;
 import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchLit;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -62,7 +62,7 @@ public class TileEntityTorchLit extends TileEntity implements net.minecraft.util
 			if (fuel < 0) {
 				if (ModConfig.configDebug)
 					System.out.printf("Torch at %d, %d, %d has burnt (fuel %d)\n", pos.getX(), pos.getY(), pos.getZ(), fuel);
-				worldObj.setBlockState(pos, ModBlocks.torch_burnt.getDefaultState());
+				((IBlockTorchLit) getBlockType()).burnOut(worldObj, pos);
 			}
 
 			tickCounter = 0;

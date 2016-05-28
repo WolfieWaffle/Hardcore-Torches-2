@@ -130,4 +130,26 @@ public class BlockTorchLit extends BlockTorch implements ITileEntityProvider, IB
 
         return drop;
     }
+
+	/**
+	 * @return The Block type for this torches burnt variant.
+	 */
+	@Override
+	public Block getBurntVariant() {
+		return ModBlocks.torch_burnt;
+	}
+
+	/**
+	 * Makes the torch burn out.
+	 * @param worldIn 	The world object
+	 * @param pos 		The position of the block
+	 */
+	public void burnOut(World worldIn, BlockPos pos) {
+		IBlockState state = worldIn.getBlockState(pos);
+		EnumFacing facing = state.getValue(FACING);
+
+		IBlockState newState = this.getBurntVariant().getDefaultState().withProperty(FACING, facing);
+
+		worldIn.setBlockState(pos, newState);
+	}
 }

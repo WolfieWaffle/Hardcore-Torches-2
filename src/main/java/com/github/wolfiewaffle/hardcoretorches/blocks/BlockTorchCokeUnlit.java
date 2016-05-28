@@ -11,10 +11,8 @@ import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
 import com.github.wolfiewaffle.hardcoretorches.tileentity.TileEntityTorchCokeUnlit;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockTorch;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -27,18 +25,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockTorchCokeUnlit extends BlockTorch implements ITileEntityProvider, IBlockTorchUnlit {
+public class BlockTorchCokeUnlit extends BlockTorchUnlit implements ITileEntityProvider, IBlockTorchUnlit {
 
 	public int MAX_FUEL = ModConfig.configTorchCokeFuel;
 
 	public BlockTorchCokeUnlit(String name) {
+		super(name);
 		this.setRegistryName(name);
-		this.setUnlocalizedName(this.getRegistryName().toString());
-		this.setCreativeTab(CreativeTabs.DECORATIONS);
-		this.setHardness(0.0f);
-		this.setResistance(0.0f);
-		this.setLightLevel(0.0f);
-		this.isBlockContainer = true;
 	}
 
 	// Create tile entity

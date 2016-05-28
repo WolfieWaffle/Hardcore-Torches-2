@@ -28,4 +28,13 @@ public class BlockTorchStoneLit extends BlockTorchLit implements ITileEntityProv
 	public Block getUnlitVariant() {
 		return ModBlocks.torch_unlit;
 	}
+
+
+	/**
+	 * @return The Block type for this torches burnt variant.
+	 */
+	@Override
+	public Block getBurntVariant() {
+		return ModBlocks.torch_stone_burnt;
+	}
 }
