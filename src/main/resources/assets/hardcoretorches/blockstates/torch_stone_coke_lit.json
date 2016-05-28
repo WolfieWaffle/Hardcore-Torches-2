@@ -3,7 +3,7 @@
   "defaults": {
     "model": "minecraft:torch_wall",
     "textures": {
-      "torch": "hardcoretorches:blocks/torch_stone_lit"
+      "torch": "hardcoretorches:blocks/torch_stone_coke_lit"
     },
     "transform": "forge:default-item"
   },
@@ -20,7 +20,7 @@
     "inventory": [{
       "model": "builtin/generated",
       "textures": {
-        "layer0": "hardcoretorches:blocks/torch_stone_lit"
+        "layer0": "hardcoretorches:blocks/torch_stone_coke_lit"
       }
     }]
   }
