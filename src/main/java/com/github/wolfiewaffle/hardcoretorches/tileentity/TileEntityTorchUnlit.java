@@ -1,14 +1,11 @@
 package com.github.wolfiewaffle.hardcoretorches.tileentity;
 
-import com.github.wolfiewaffle.hardcoretorches.ModConfig;
-import com.github.wolfiewaffle.hardcoretorches.interfaces.ITileEntityTorchUnlit;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTorchUnlit extends TileEntity implements ITileEntityTorchUnlit {
+public class TileEntityTorchUnlit extends TileEntity {
 	public static final String publicName = "tileEntityTorchUnlit";
-	private int fuel = ModConfig.configTorchFuel;
+	private int fuel = 0;
 
 	/**
 	 * @return The current fuel value of the TileEntity
@@ -21,8 +18,8 @@ public class TileEntityTorchUnlit extends TileEntity implements ITileEntityTorch
 	 * Sets the fuel value of the TileEntity
 	 * @param f The new fuel value
 	 */
-	public void setFuel(int f) {
-		this.fuel = f;
+	public void setFuel(int fuel) {
+		this.fuel = fuel;
 	}
 
 	// Needed for NBT
