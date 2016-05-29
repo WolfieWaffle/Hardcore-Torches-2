@@ -20,9 +20,9 @@ public class Recipes {
 
 		// Remove recipes
 		RecipeRemover.removeAnyRecipe(new ItemStack(Blocks.TORCH));
-		//if (HardcoreTorches.isTconInstalled) {
+		if (HardcoreTorches.isTconInstalled) {
 			RecipeRemover.removeAnyRecipe(Item.getItemFromBlock(slimeknights.tconstruct.gadgets.TinkerGadgets.stoneTorch));
-		//}
+		}
 
 		// Torch recipes
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.getItemFromBlock(ModBlocks.torch_unlit)), "A", "B", 'A', coal, 'B', "stickWood"));
