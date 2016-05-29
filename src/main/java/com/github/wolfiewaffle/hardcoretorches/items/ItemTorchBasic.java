@@ -2,7 +2,14 @@ package com.github.wolfiewaffle.hardcoretorches.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class ItemTorchBasic extends ItemBlock {
 
@@ -31,5 +38,9 @@ public class ItemTorchBasic extends ItemBlock {
 			this.setHasSubtypes(hasSubtypes);
 			this.setMaxDamage(fuel);
 		}
+	}
+
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		return EnumActionResult.SUCCESS;
 	}
 }
