@@ -25,6 +25,7 @@ public class ItemTorchBasic extends ItemBlock {
 	public ItemTorchBasic(Block block, String name, int fuel) {
 		super(block);
 		this.setRegistryName(name);
+		this.setUnlocalizedName(this.getRegistryName().toString());
 		this.setCreativeTab(CreativeTabs.DECORATIONS);
 		if (fuel > 0) {
 			this.setHasSubtypes(hasSubtypes);
