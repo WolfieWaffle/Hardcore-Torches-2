@@ -18,12 +18,14 @@ public class ModConfig {
 	public static int configTorchCokeFuel;
 	public static String[] configLightItems;
 	public static String[] configFreeLightItems;
+	public static String[] configInWorldLightItems;
 	public static int configTorchDropMode;
 	public static boolean configLightInInventory;
 
 	// Set of resource locations to store for crafting
 	public static Set<ResourceLocation> lightItems = new HashSet<ResourceLocation>();
 	public static Set<ResourceLocation> freeLightItems = new HashSet<ResourceLocation>();
+	public static Set<ResourceLocation> inWorldLightItems = new HashSet<ResourceLocation>();
 
 	// Event to create config file
 	public static void init(FMLPreInitializationEvent event) {
@@ -42,6 +44,7 @@ public class ModConfig {
 		configTorchCokeFuel = config.getInt("coke torch fuel", Configuration.CATEGORY_GENERAL, 2000, 1, Integer.MAX_VALUE, "The max duration of a coke torch in seconds. Might not update already placed torches. (Requires enable coke torches: true)");
 		configLightItems = config.getStringList("consumed lighter items", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:flint", "minecraft:flint_and_steel", "minecraft:fire_charge"}, "A list of items that can be used to light a torch. If the item is not damageable, it will be consumed.");
 		configFreeLightItems = config.getStringList("free lighter items", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:torch", "minecraft:lava_bucket", "hardcoretorches:torch_lit", "hardcoretorches:torch_coke_lit"}, "A list of items that can be used to light a torch. These will not be damaged or consumed.");
+		configInWorldLightItems = config.getStringList("in world lighter items", Configuration.CATEGORY_GENERAL, new String[] {"minecraft:torch", "hardcoretorches:torch_lit", "hardcoretorches:torch_coke_lit"}, "A list of blocks that can be used to light a torch by right clicking them.");
 		configTorchDropMode = config.getInt("torch drop mode", Configuration.CATEGORY_GENERAL, 0, 0, 2, "0: Torches drop as lit torches when broken\n1: Torches drop as unlit torches when broken\n2: Torches burn out completely when broken");
 		configLightInInventory = config.getBoolean("light torches in inventory", Configuration.CATEGORY_GENERAL, true, "Allow lighting torches in the crafting grid.");
 
@@ -55,6 +58,12 @@ public class ModConfig {
 		for (String string : configFreeLightItems) {
 			ResourceLocation rl = new ResourceLocation(string);
 			freeLightItems.add(rl);
+		}
+
+		// Add all the items to the resource location set
+		for (String string : configFreeLightItems) {
+			ResourceLocation rl = new ResourceLocation(string);
+			inWorldLightItems.add(rl);
 		}
 
 		config.save();
