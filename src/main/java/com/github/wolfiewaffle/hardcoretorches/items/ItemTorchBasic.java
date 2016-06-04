@@ -49,16 +49,18 @@ public class ItemTorchBasic extends ItemBlock {
 		}
 	}
 
+
+
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUseFirst(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
+			EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
 
 		ResourceLocation rl = worldIn.getBlockState(pos).getBlock().getRegistryName();
 		if (ModConfig.inWorldLightItems.contains(rl)) {
 			lightTorch(playerIn, hand);
 			return EnumActionResult.SUCCESS;
 		}
-		return super.onItemUse(stack, playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+		return super.onItemUseFirst(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, hand);
 	}
 
 	public void lightTorch(EntityPlayer playerIn, EnumHand hand) {
